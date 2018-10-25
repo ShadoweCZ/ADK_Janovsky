@@ -9,6 +9,18 @@ Draw::Draw(QWidget *parent) : QWidget(parent){
     q.setY(250);
 }
 
+QPoint Draw::getPoint(){
+    return q;
+}
+
+vector<vector<QPoint>> Draw::getList(){
+    return poly_list;
+}
+
+void Draw::setResultPolygons(vector<int> res){
+    result_polygons = res;
+}
+
 void Draw::import (const char* path, std::ifstream &file){      //taken from internet with some (many) edits
     file.open(path);                                            //loading polygons from *.txt file
     int count;                                                  //number of polygons

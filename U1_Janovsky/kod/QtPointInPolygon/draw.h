@@ -21,11 +21,11 @@ public:
     void paintEvent(QPaintEvent *e);            //paints the polygon
     void mousePressEvent(QMouseEvent *e);       //creates point Q on click
     void clearCanvas();                         //deletes all from the window
-    QPoint getPoint() {return q;}               //returns coordinates of clicked point
+    QPoint getPoint();                          //returns coordinates of clicked point
+    vector<vector<QPoint>> getList();           //access to polygon list
     explicit Draw(QWidget *parent = nullptr);
     void import(const char* path, std::ifstream &file);             // used to load polygon from txt file
-    vector<vector<QPoint>> getList(){return poly_list;}             //access to polygon list
-    void setResultPolygons(vector<int> res){result_polygons = res;} //sets the private variable containing the indexes of polygons with Q point in them
+    void setResultPolygons(vector<int> res);    //sets the private variable containing the indexes of polygons with Q point in them
 
 
 
