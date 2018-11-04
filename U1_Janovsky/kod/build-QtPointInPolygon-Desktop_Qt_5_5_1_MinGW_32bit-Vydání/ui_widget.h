@@ -30,7 +30,6 @@ class Ui_Widget
 public:
     QHBoxLayout *horizontalLayout;
     Draw *Canvas;
-    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QComboBox *method;
@@ -61,19 +60,18 @@ public:
         sizePolicy.setVerticalStretch(1);
         sizePolicy.setHeightForWidth(Canvas->sizePolicy().hasHeightForWidth());
         Canvas->setSizePolicy(sizePolicy);
-        layoutWidget = new QWidget(Canvas);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(540, 10, 171, 461));
-        verticalLayout = new QVBoxLayout(layoutWidget);
+
+        horizontalLayout->addWidget(Canvas);
+
+        verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        label = new QLabel(layoutWidget);
+        label = new QLabel(Widget);
         label->setObjectName(QStringLiteral("label"));
 
         verticalLayout->addWidget(label);
 
-        method = new QComboBox(layoutWidget);
+        method = new QComboBox(Widget);
         method->setObjectName(QStringLiteral("method"));
 
         verticalLayout->addWidget(method);
@@ -82,7 +80,7 @@ public:
 
         verticalLayout->addItem(verticalSpacer);
 
-        Import = new QPushButton(layoutWidget);
+        Import = new QPushButton(Widget);
         Import->setObjectName(QStringLiteral("Import"));
 
         verticalLayout->addWidget(Import);
@@ -91,12 +89,12 @@ public:
 
         verticalLayout->addItem(verticalSpacer_6);
 
-        anal = new QPushButton(layoutWidget);
+        anal = new QPushButton(Widget);
         anal->setObjectName(QStringLiteral("anal"));
 
         verticalLayout->addWidget(anal);
 
-        label_2 = new QLabel(layoutWidget);
+        label_2 = new QLabel(Widget);
         label_2->setObjectName(QStringLiteral("label_2"));
 
         verticalLayout->addWidget(label_2);
@@ -105,7 +103,7 @@ public:
 
         verticalLayout->addItem(verticalSpacer_2);
 
-        repaint = new QPushButton(layoutWidget);
+        repaint = new QPushButton(Widget);
         repaint->setObjectName(QStringLiteral("repaint"));
 
         verticalLayout->addWidget(repaint);
@@ -114,7 +112,7 @@ public:
 
         verticalLayout->addItem(verticalSpacer_3);
 
-        clear = new QPushButton(layoutWidget);
+        clear = new QPushButton(Widget);
         clear->setObjectName(QStringLiteral("clear"));
 
         verticalLayout->addWidget(clear);
@@ -124,7 +122,7 @@ public:
         verticalLayout->addItem(verticalSpacer_4);
 
 
-        horizontalLayout->addWidget(Canvas);
+        horizontalLayout->addLayout(verticalLayout);
 
 
         retranslateUi(Widget);
