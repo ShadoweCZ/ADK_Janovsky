@@ -256,8 +256,6 @@ QPolygon Algorithms::CHSweep (vector<QPoint> &points)
     //Create convex hull using the sweepline procedure
     QPolygon ch;
 
-    int size = points.size();
-
     //sort by X
     std::sort(points.begin(), points.end(), SortByXAsc());
 
@@ -275,7 +273,7 @@ QPolygon Algorithms::CHSweep (vector<QPoint> &points)
     p[0]=1;
     p[1]=0;
 
-    for (int i = 2; i < size; i++)
+    for (unsigned int i = 2; i < points.size(); i++)
     {
         //Point in the upper halfplane
         //Link i with predecessor/successor
@@ -322,9 +320,20 @@ QPolygon Algorithms::CHSweep (vector<QPoint> &points)
        i = n[i];
     }
 
+
+    //Delete duplicit points
+    for(int i = 0; i<(ch.size()-1); i++){
+        for(int j = i+1; j<(ch.size()); j++){
+            if((ch[j].x() == ch[i].x())&&(ch[j].y() == ch[i].y())){
+                ch.remove(j);
+                j--;
+            }
+        }
+    }
+
     //Delete points on the same line
-    for(int i=0; i<(ch.size()-2); i++){                                 //again, points are sorted, so we test only 2 points next to each other on the list
-        if(getPointLinePosition(ch[i+2],ch[i],ch[i+1])==ON){            // if 3 points are in line , remove the midle one, j+2 becomes j+1 and test again
+    for(int i=0; i<(ch.size()-2); i++){
+        if(getPointLinePosition(ch[i+2],ch[i],ch[i+1])==ON){
             ch.remove(i+1);
             i--;
         }

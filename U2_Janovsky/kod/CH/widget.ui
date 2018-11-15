@@ -82,13 +82,6 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="label_6">
-       <property name="text">
-        <string>Pints generating method</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QComboBox" name="comboBox_2">
        <item>
         <property name="text">
@@ -135,7 +128,7 @@
       </widget>
      </item>
      <item>
-      <spacer name="verticalSpacer">
+      <spacer name="verticalSpacer_6">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -146,13 +139,6 @@
         </size>
        </property>
       </spacer>
-     </item>
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Convex Hull method</string>
-       </property>
-      </widget>
      </item>
      <item>
       <widget class="QComboBox" name="comboBox">
@@ -179,29 +165,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="pushButton_3">
        <property name="text">
-        <string>Create Convex Hull</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="verticalSpacer_3">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Times (10x completed)</string>
+        <string>Crete Convex Hull</string>
        </property>
       </widget>
      </item>
@@ -209,69 +175,6 @@
       <widget class="QLabel" name="label_2">
        <property name="text">
         <string>time1</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_7">
-       <property name="text">
-        <string>time2</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_8">
-       <property name="text">
-        <string>time3</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_9">
-       <property name="text">
-        <string>time4</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_10">
-       <property name="text">
-        <string>time5</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_11">
-       <property name="text">
-        <string>time6</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_12">
-       <property name="text">
-        <string>time7</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_13">
-       <property name="text">
-        <string>time8</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_14">
-       <property name="text">
-        <string>time9</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_15">
-       <property name="text">
-        <string>time10</string>
        </property>
       </widget>
      </item>

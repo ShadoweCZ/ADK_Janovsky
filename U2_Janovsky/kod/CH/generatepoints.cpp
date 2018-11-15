@@ -1,6 +1,10 @@
+#include "widget.h"
+#include "ui_widget.h"
 #include "generatepoints.h"
 #include "sortbyxasc.h"
 #include "sortbyyasc.h"
+#include "algorithms.h"
+#include "draw.h"
 #include <QtMath>
 
 GeneratePoints::GeneratePoints(){}

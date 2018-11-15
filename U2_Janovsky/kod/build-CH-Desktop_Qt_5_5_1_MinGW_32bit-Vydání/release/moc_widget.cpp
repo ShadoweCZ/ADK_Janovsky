@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Widget_t {
     QByteArrayData data[7];
-    char stringdata0[113];
+    char stringdata0[115];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -30,18 +30,17 @@ struct qt_meta_stringdata_Widget_t {
 static const qt_meta_stringdata_Widget_t qt_meta_stringdata_Widget = {
     {
 QT_MOC_LITERAL(0, 0, 6), // "Widget"
-QT_MOC_LITERAL(1, 7, 21), // "on_pushButton_clicked"
-QT_MOC_LITERAL(2, 29, 0), // ""
-QT_MOC_LITERAL(3, 30, 23), // "on_pushButton_2_clicked"
-QT_MOC_LITERAL(4, 54, 17), // "on_points_clicked"
-QT_MOC_LITERAL(5, 72, 31), // "on_horizontalSlider_sliderMoved"
-QT_MOC_LITERAL(6, 104, 8) // "position"
+QT_MOC_LITERAL(1, 7, 23), // "on_pushButton_2_clicked"
+QT_MOC_LITERAL(2, 31, 0), // ""
+QT_MOC_LITERAL(3, 32, 17), // "on_points_clicked"
+QT_MOC_LITERAL(4, 50, 31), // "on_horizontalSlider_sliderMoved"
+QT_MOC_LITERAL(5, 82, 8), // "position"
+QT_MOC_LITERAL(6, 91, 23) // "on_pushButton_3_clicked"
 
     },
-    "Widget\0on_pushButton_clicked\0\0"
-    "on_pushButton_2_clicked\0on_points_clicked\0"
-    "on_horizontalSlider_sliderMoved\0"
-    "position"
+    "Widget\0on_pushButton_2_clicked\0\0"
+    "on_points_clicked\0on_horizontalSlider_sliderMoved\0"
+    "position\0on_pushButton_3_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -61,14 +60,14 @@ static const uint qt_meta_data_Widget[] = {
  // slots: name, argc, parameters, tag, flags
        1,    0,   34,    2, 0x08 /* Private */,
        3,    0,   35,    2, 0x08 /* Private */,
-       4,    0,   36,    2, 0x08 /* Private */,
-       5,    1,   37,    2, 0x08 /* Private */,
+       4,    1,   36,    2, 0x08 /* Private */,
+       6,    0,   39,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    5,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,    6,
 
        0        // eod
 };
@@ -79,10 +78,10 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         Widget *_t = static_cast<Widget *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->on_pushButton_clicked(); break;
-        case 1: _t->on_pushButton_2_clicked(); break;
-        case 2: _t->on_points_clicked(); break;
-        case 3: _t->on_horizontalSlider_sliderMoved((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 0: _t->on_pushButton_2_clicked(); break;
+        case 1: _t->on_points_clicked(); break;
+        case 2: _t->on_horizontalSlider_sliderMoved((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 3: _t->on_pushButton_3_clicked(); break;
         default: ;
         }
     }
