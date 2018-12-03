@@ -25,14 +25,21 @@ std::vector<QPoint> GeneratePoints::generateCluster(int &n, QSize &size){
             pts.push_back(QPoint(new_x,new_y));
         }
     }
-                                                                            //Delete duplicit points, because Jarvis
+
+
+    vector<int> ind;                                                                         //Delete duplicit points, because Jarvis
     std::sort(pts.begin(), pts.end(), SortByXAsc());
     for(unsigned int j = 0; j<(pts.size()-1); j++){
         if((pts[j].x() == pts[j+1].x())&&(pts[j].y() == pts[j+1].y())){
-            pts.erase(pts.begin()+j);
-            j--;
+        ind.push_back(j);    ;
         }
     }
+    for(int i=ind.size() - 1; i >= 0; i--)
+    {
+        pts.erase(pts.begin() + ind[i]);
+    }
+
+
     return pts;
 }
 std::vector<QPoint> GeneratePoints::generateRandom(int &n, QSize &size){
@@ -43,14 +50,19 @@ std::vector<QPoint> GeneratePoints::generateRandom(int &n, QSize &size){
     for (int i = 0; i<n;i++){                                               // random points generation
         pts.push_back({rand()%w,rand()%h});
     }
-                                                                            //Delete duplicit points, because Jarvis
+
+    vector<int> ind;                                                                         //Delete duplicit points, because Jarvis
     std::sort(pts.begin(), pts.end(), SortByXAsc());
     for(unsigned int j = 0; j<(pts.size()-1); j++){
         if((pts[j].x() == pts[j+1].x())&&(pts[j].y() == pts[j+1].y())){
-            pts.erase(pts.begin()+j);
-            j--;
+        ind.push_back(j);    ;
         }
     }
+    for(int i=ind.size() - 1; i >= 0; i--)
+    {
+        pts.erase(pts.begin() + ind[i]);
+    }
+
     return pts;
 
 }
@@ -87,14 +99,19 @@ std::vector<QPoint> GeneratePoints::generateCircle(int &n, QSize &size){
         p.setY(center.y() + radius*sin(i*fi));
         pts.push_back(p);
     }
-                                                                            //Delete duplicit points, because Jarvis
+
+    vector<int> ind;                                                                         //Delete duplicit points, because Jarvis
     std::sort(pts.begin(), pts.end(), SortByXAsc());
     for(unsigned int j = 0; j<(pts.size()-1); j++){
         if((pts[j].x() == pts[j+1].x())&&(pts[j].y() == pts[j+1].y())){
-        pts.erase(pts.begin()+j);
-        j--;
+        ind.push_back(j);    ;
         }
     }
+    for(int i=ind.size() - 1; i >= 0; i--)
+    {
+        pts.erase(pts.begin() + ind[i]);
+    }
+
     return pts;
 }
 
@@ -118,13 +135,19 @@ std::vector<QPoint> GeneratePoints::generateEllipse(int &n, QSize &size){
         pts.push_back(p);
     }
 
+
+    vector<int> ind;                                                                         //Delete duplicit points, because Jarvis
     std::sort(pts.begin(), pts.end(), SortByXAsc());
-    for( unsigned int j = 0; j<(pts.size()-1); j++){
+    for(unsigned int j = 0; j<(pts.size()-1); j++){
         if((pts[j].x() == pts[j+1].x())&&(pts[j].y() == pts[j+1].y())){
-        pts.erase(pts.begin()+j);
-        j--;
+        ind.push_back(j);    ;
         }
     }
+    for(int i=ind.size() - 1; i >= 0; i--)
+    {
+        pts.erase(pts.begin() + ind[i]);
+    }
+
     return pts;
 }
 
@@ -146,13 +169,19 @@ std::vector<QPoint> GeneratePoints::generateStarShape(int &n, QSize &size){
         pts.push_back(p);
     }
 
+
+    vector<int> ind;                                                                         //Delete duplicit points, because Jarvis
     std::sort(pts.begin(), pts.end(), SortByXAsc());
     for(unsigned int j = 0; j<(pts.size()-1); j++){
         if((pts[j].x() == pts[j+1].x())&&(pts[j].y() == pts[j+1].y())){
-        pts.erase(pts.begin()+j);
-        j--;
+        ind.push_back(j);    ;
         }
     }
+    for(int i=ind.size() - 1; i >= 0; i--)
+    {
+        pts.erase(pts.begin() + ind[i]);
+    }
+
     return pts;
 }
 
@@ -182,13 +211,19 @@ std::vector<QPoint> GeneratePoints::generateSquare(int &n, QSize &size)
         pts.push_back(QPoint(p.x(),p.y()+(i*length_small)));
     }
 
+
+    vector<int> ind;                                                                         //Delete duplicit points, because Jarvis
     std::sort(pts.begin(), pts.end(), SortByXAsc());
     for(unsigned int j = 0; j<(pts.size()-1); j++){
         if((pts[j].x() == pts[j+1].x())&&(pts[j].y() == pts[j+1].y())){
-        pts.erase(pts.begin()+j);
-        j--;
+        ind.push_back(j);    ;
         }
     }
+    for(int i=ind.size() - 1; i >= 0; i--)
+    {
+        pts.erase(pts.begin() + ind[i]);
+    }
+
     return pts;
 }
 
