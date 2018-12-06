@@ -87,7 +87,7 @@ int Algorithms::getNearestPoint (QPoint3D &p, std::vector<QPoint3D> &points)
     double dist_min = distance(p,points[1]);
     int i_min = 1;
 
-    for(int i = 2; i < points.size();i++)
+    for(unsigned int i = 2; i < points.size();i++)
     {
         //Compute the distance
         double dist = distance(p,points[i]);
@@ -111,7 +111,7 @@ int Algorithms::getDelaunayPoint(QPoint3D &s, QPoint3D &e, std::vector<QPoint3D>
     double rad_min = 10e10;
 
     //Process all points...
-    for(int i = 0;i < points.size();i++)
+    for(unsigned int i = 0;i < points.size();i++)
     {
         //...except the analogous to start, end
         if ((points[i] != s) && (points[i] != e))
@@ -274,7 +274,7 @@ std::vector<Edge> Algorithms::createContours(std::vector<Edge> &dt, double z_min
 
 
     //Process all triangles
-    for(int i = 0; i < dt.size(); i += 3)
+    for(unsigned int i = 0; i < dt.size(); i += 3)
     {
         //Get triangle vertices
         QPoint3D p1 = dt[i].getS();
@@ -405,7 +405,7 @@ std::vector<Triangle> Algorithms::analyzeDTM(std::vector<Edge> &dt)
     std::vector<Triangle> dtm;
 
     //Process all triangles
-    for(int i = 0; i < dt.size(); i += 3)
+    for(unsigned int i = 0; i < dt.size(); i += 3)
     {
         Edge e1 = dt[i];
         Edge e2 = dt[i+1];
