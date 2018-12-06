@@ -7,6 +7,7 @@
 #include "edge.h"
 #include "algorithms.h"
 #include "triangle.h"
+#include "draw.h"
 
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
@@ -68,12 +69,13 @@ void Widget::on_Delaunay_clicked()
 void Widget::on_Contours_clicked()
 {
     //Create contour lines
-    double dz = ui->DZ->text().toDouble();
+    int dz = ui->DZ->text().toInt();
     std::vector<Edge> dt = ui->Canvas->getDT();
-    std::vector<Edge> contours = Algorithms::createContours(dt, 0, 9999, dz);
-    std::vector<Edge> contours5 = Algorithms::createContours(dt, 0, 9999, dz*5);
-    ui->Canvas->setContours(contours);
-    ui->Canvas->setContours5(contours5);
+    std::vector<double> contour_heights;
+    std::vector<Edge> contours = Algorithms::createContours(dt, 0.0, 9999.9, dz, contour_heights);
+    //std::vector<Edge> contours5 = Algorithms::createContours(dt, 0, 9999, dz*5);
+    ui->Canvas->setContours(contours,contour_heights,dz);
+    //ui->Canvas->setContours5(contours5);
     repaint();
 }
 

@@ -2,47 +2,78 @@
 #include <QtGui>
 #include "widget.h"
 #include "ui_widget.h"
+#include "generatepoints.h"
+#include <vector>
+#include <fstream>
+#include "edge.h"
+#include "algorithms.h"
+#include "triangle.h"
 
 Draw::Draw(QWidget *parent) : QWidget(parent){}
+
+void Draw::setContours(std::vector<Edge> &contours_, std::vector<double> &contour_heights_,int dz_){
+    contours = contours_;
+    contour_heights = contour_heights_;
+    dz = dz_;
+   }
 
 void Draw::paintEvent(QPaintEvent *e)
 {
    QPainter painter(this);
    painter.begin(this);
    painter.setPen(Qt::red);
-
    //Draw points
-   for(int i = 0; i < points.size(); i++)
+   for(unsigned int i = 0; i < points.size(); i++)
    {
        painter.drawEllipse(points[i].x() - 2, points[i].y() - 2, 4, 4);
-       painter.drawText(points[i].x() + 5, points[i].y() + 5, QString::number(points[i].getZ()));
+       //painter.drawText(points[i].x() + 5, points[i].y() + 5, QString::number(points[i].getZ()));
    }
 
    //Draw Delaunay edges
-   for(int i = 0; i < dt.size(); i++)
+   for(unsigned int i = 0; i < dt.size(); i++)
    {
        painter.setPen(QPen(QColor(220,220,220),1));
        painter.drawLine(dt[i].getS(), dt[i].getE());
    }
 
    //Draw contour lines
-     for(int i = 0; i < contours.size(); i++)
+     for(unsigned int i = 0; i < contours.size(); i++)
    {
             painter.setPen(QPen(QColor(139,69,19),1));
             painter.drawLine(contours[i].getS(), contours[i].getE());
    }
+
      //Draw contour lines
-     for(int i = 0; i < contours5.size(); i++)
-     {
+for(unsigned int i = 0; i < contours.size(); i++)
+{
+
+    int h = contour_heights[i];
+    int hl = 5*dz;
+
+    //diferenciate betwen main contur and normal contur lines
+    if(!(h%(hl)))
+       {
         painter.setPen(QPen(QColor(139,69,19),2));
-        painter.drawLine(contours5[i].getS(), contours5[i].getE());
-     }
+        if(!(i%(8))){ // describe main contur lines with thier heights
+            double text_x = (contours[i].getS().x() + contours[i].getE().x())/2;
+            double text_y = (contours[i].getS().y() + contours[i].getE().y())/2;
+            painter.drawText(text_x, text_y, QString::number(h));
+        }
+    }
+    else
+    {
+         painter.setPen(QPen(QColor(139,69,19),1));
+    }
+    painter.drawLine(contours[i].getS(), contours[i].getE());
+}
+
+
 
    if(slope == TRUE)
    {
        //Draw slope
        double c = 255.0/180;
-       for(int i = 0; i < dtm.size(); i++)
+       for(unsigned int i = 0; i < dtm.size(); i++)
        {
            //Get triangle and its vertices
            Triangle t = dtm[i];
@@ -67,7 +98,7 @@ void Draw::paintEvent(QPaintEvent *e)
    if(aspect == TRUE)
    {
        //Draw aspect
-       for(int i =0; i<dtm.size(); i++)
+       for(unsigned int i =0; i<dtm.size(); i++)
        {
            //Get triangle and its vertices
            Triangle t = dtm[i];
@@ -137,7 +168,7 @@ void Draw::clearDT()
     dt.clear();
     dtm.clear();
     contours.clear();
-    contours5.clear();
+    //contours5.clear();
 
 }
 

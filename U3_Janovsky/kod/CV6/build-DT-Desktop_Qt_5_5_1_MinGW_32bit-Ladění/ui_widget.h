@@ -166,7 +166,7 @@ public:
         Points->setText(QApplication::translate("Widget", "Points", 0));
         Delaunay->setText(QApplication::translate("Widget", "Delaunay", 0));
         label_2->setText(QApplication::translate("Widget", "Interval of contours", 0));
-        DZ->setText(QApplication::translate("Widget", "15", 0));
+        DZ->setText(QApplication::translate("Widget", "5", 0));
         Contours->setText(QApplication::translate("Widget", "Contours", 0));
         comboBox_2->clear();
         comboBox_2->insertItems(0, QStringList()

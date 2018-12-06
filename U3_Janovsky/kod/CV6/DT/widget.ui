@@ -119,7 +119,7 @@
      <item>
       <widget class="QLineEdit" name="DZ">
        <property name="text">
-        <string>15</string>
+        <string>5</string>
        </property>
       </widget>
      </item>
