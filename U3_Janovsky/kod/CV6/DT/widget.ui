@@ -36,7 +36,7 @@
      <item>
       <widget class="QLineEdit" name="points_count">
        <property name="text">
-        <string>199</string>
+        <string>600</string>
        </property>
       </widget>
      </item>
@@ -49,22 +49,22 @@
        </item>
        <item>
         <property name="text">
-         <string>Kupa</string>
+         <string>Pile</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Spočinek</string>
+         <string>Rest</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Údolí</string>
+         <string>Valley</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Hřbet</string>
+         <string>Ridge</string>
         </property>
        </item>
       </widget>
@@ -119,7 +119,7 @@
      <item>
       <widget class="QLineEdit" name="DZ">
        <property name="text">
-        <string>5</string>
+        <string>15</string>
        </property>
       </widget>
      </item>

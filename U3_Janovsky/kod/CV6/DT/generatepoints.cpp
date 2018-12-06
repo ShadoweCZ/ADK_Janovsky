@@ -1,4 +1,5 @@
 #include "generatepoints.h"
+#include "qpoint3d.h"
 
 GeneratePoints::GeneratePoints(){}
 
@@ -36,33 +37,33 @@ std::vector<QPoint3D> GeneratePoints::generateKupa(int &n, QSize &size){
 
     for(int i = 0;i<n/4;i++)                                                  //generating points on circle of random radius
     {
-        p.setX(center.x() + (50+rand()%5)*cos(i*(fi+rand()%1)));
-        p.setY(center.y() + (50+rand()%5)*sin(i*(fi+rand()%1)));
-        p.setZ(75+rand()%5);
+        p.setX(center.x() + (50+rand()%5)*cos(i*(fi)));
+        p.setY(center.y() + (50+rand()%5)*sin(i*(fi)));
+        p.setZ(75+rand()%3);
         pts.push_back(p);
     }
 
     for(int i = 0;i<n/4;i++)                                                  //generating points on circle of random radius
     {
-        p.setX(center.x() + (100+rand()%15)*cos(i*(fi+rand()%1)));
-        p.setY(center.y() + (100+rand()%15)*sin(i*(fi+rand()%1)));
-        p.setZ(50+rand()%5);
+        p.setX(center.x() + (100+rand()%5)*cos(i*(fi)));
+        p.setY(center.y() + (100+rand()%5)*sin(i*(fi)));
+        p.setZ(50+rand()%2);
         pts.push_back(p);
     }
 
     for(int i = 0;i<n/4;i++)                                                  //generating points on circle of random radius
     {
-        p.setX(center.x() + (150+rand()%25)*cos(i*(fi+rand()%1)));
-        p.setY(center.y() + (150+rand()%25)*sin(i*(fi+rand()%1)));
-        p.setZ(25+rand()%5);
+        p.setX(center.x() + (150+rand()%5)*cos(i*(fi)));
+        p.setY(center.y() + (150+rand()%5)*sin(i*(fi)));
+        p.setZ(25+rand()%2);
         pts.push_back(p);
     }
 
     for(int i = 0;i<n/4;i++)                                                  //generating points on circle of random radius
     {
-        p.setX(center.x() + (350+rand()%25)*cos(i*(fi+rand()%1)));
-        p.setY(center.y() + (350+rand()%25)*sin(i*(fi+rand()%1)));
-        p.setZ(0+rand()%5);
+        p.setX(center.x() + (330+rand()%5)*cos(i*(fi)));
+        p.setY(center.y() + (370+rand()%5)*sin(i*(fi)));
+        p.setZ(0+rand()%2);
         pts.push_back(p);
     }
 
@@ -91,8 +92,8 @@ std::vector<QPoint3D> GeneratePoints::generateHrbet(int &n, QSize &size){
     // R 1
     for(int i = 0;i<n/7;i++)
     {
-        p.setX(center.x() + 2*i +((rand()%10)-rand()%10));
-        p.setY(center.y() + (i*15)+rand()%20);
+        p.setX(center.x() + 2*i );
+        p.setY(center.y() + (i*15));
         p.setZ(n-2*i-rand()%3);
         pts.push_back(p);
     }
@@ -100,8 +101,8 @@ std::vector<QPoint3D> GeneratePoints::generateHrbet(int &n, QSize &size){
     // L 1
     for(int i = 0;i<n/7;i++)
     {
-        p.setX(center.x() - 2*i  -((rand()%10)-rand()%10));
-        p.setY(center.y() + (i*15)+rand()%20);
+        p.setX(center.x() - 2*i  );
+        p.setY(center.y() + (i*15));
         p.setZ(n-2*i-rand()%3);
         pts.push_back(p);
     }
@@ -109,8 +110,8 @@ std::vector<QPoint3D> GeneratePoints::generateHrbet(int &n, QSize &size){
     // R 2
     for(int i = 0;i<n/7;i++)
     {
-        p.setX(center.x() + 10*i +((rand()%20)-rand()%20));
-        p.setY(center.y() + (i*25)+rand()%20);
+        p.setX(center.x() + 10*i );
+        p.setY(center.y() + (i*25));
         p.setZ(n-6*i-rand()%3);
         pts.push_back(p);
     }
@@ -118,8 +119,8 @@ std::vector<QPoint3D> GeneratePoints::generateHrbet(int &n, QSize &size){
     // L 2
     for(int i = 0;i<n/7;i++)
     {
-        p.setX(center.x() - 10*i -((rand()%20)-rand()%20));
-        p.setY(center.y() + (i*25)+rand()%20);
+        p.setX(center.x() - 10*i);
+        p.setY(center.y() + (i*25));
         p.setZ(n-6*i-rand()%3);
         pts.push_back(p);
     }
@@ -127,36 +128,36 @@ std::vector<QPoint3D> GeneratePoints::generateHrbet(int &n, QSize &size){
     // R 3
     for(int i = 0;i<n/7;i++)
     {
-        p.setX(center.x() + 8*i +((rand()%20)-rand()%20));
-        p.setY(center.y() + (i*8)+rand()%20);
-        p.setZ(n-3*i-rand()%3);
+        p.setX(center.x() + 15*i );
+        p.setY(center.y() + (i*15));
+        p.setZ(n-6*i-rand()%3);
         pts.push_back(p);
     }
 
     // L 3
     for(int i = 0;i<n/7;i++)
     {
-        p.setX(center.x() - 8*i -((rand()%20)-rand()%20));
-        p.setY(center.y() + (i*8)+rand()%20);
-        p.setZ(n-3*i-rand()%3);
+        p.setX(center.x() - 15*i);
+        p.setY(center.y() + (i*15));
+        p.setZ(n-6*i-rand()%3);
         pts.push_back(p);
     }
 
     // R 4
     for(int i = 0;i<n/7;i++)
     {
-        p.setX(center.x() + 10*i +((rand()%20)-rand()%20));
+        p.setX(center.x() + 30*i +((rand()%20)-rand()%20));
         p.setY(center.y());
-        p.setZ(n-3*i-rand()%3);
+        p.setZ(n-6*i-rand()%3);
         pts.push_back(p);
     }
 
     // L 4
     for(int i = 0;i<n/7;i++)
     {
-        p.setX(center.x() - 10*i -((rand()%20)-rand()%20));
+        p.setX(center.x() - 30*i -((rand()%20)-rand()%20));
         p.setY(center.y());
-        p.setZ(n-3*i-rand()%3);
+        p.setZ(n-6*i-rand()%3);
         pts.push_back(p);
     }
 return pts;
@@ -164,9 +165,66 @@ return pts;
 
 
 std::vector<QPoint3D> GeneratePoints::generateSpocinek(int &n, QSize &size){
+    int h = size.height()-10;                                               //window size to fit the generated stuff inside
+    int w = size.width()-10;
+                                                                            //distance betwen points
+    std::vector<QPoint3D> pts;
+    double gapX = h/ceil(std::sqrt(n));
+    double gapY = w/ceil(std::sqrt(n));
 
+
+        for(double x=10;x<w;x+=gapX){                                            //creating points
+            x = x + rand()%40;
+
+            for(double y=10;y<h;y+=gapY){
+                y = y + rand()%40;
+
+                double z;
+
+                if (y < h/3)
+                    z = (h-y - rand()%20 + rand()%20);
+
+                else if (y > 2*h/3)
+                    z = (h-y + rand()%20 - rand()%20);
+
+                else
+                    z = (h/2 - rand()%20 + rand()%20);
+
+
+                pts.push_back(QPoint3D(x,y,z));
+            }
+        }
+
+    return pts;
 }
 
 std::vector<QPoint3D> GeneratePoints::generateUdoli(int &n, QSize &size){
+    int h = size.height()-10;                                               //window size to fit the generated stuff inside
+    int w = size.width()-10;
+                                                                            //distance betwen points
+    std::vector<QPoint3D> pts;
+    double gapX = h/ceil(std::sqrt(n));
+    double gapY = w/ceil(std::sqrt(n));
 
+
+        for(double x=10;x<w;x+=gapX){                                            //creating points
+            x = x + rand()%40;
+
+            for(double y=10;y<h;y+=gapY){
+                y = y + rand()%40;
+
+                double z;
+
+                if (y < h/2)
+                    z = round(h-y - rand()%20 + rand()%20);
+
+                else
+                    z = round(y + rand()%20 - rand()%20);
+
+
+                pts.push_back(QPoint3D(x,y,z));
+            }
+        }
+
+    return pts;
 }

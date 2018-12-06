@@ -15,7 +15,7 @@ void Draw::paintEvent(QPaintEvent *e)
    for(int i = 0; i < points.size(); i++)
    {
        painter.drawEllipse(points[i].x() - 2, points[i].y() - 2, 4, 4);
-       //painter.drawText(points[i].x() + 5, points[i].y() + 5, QString::number(points[i].getZ()));
+       painter.drawText(points[i].x() + 5, points[i].y() + 5, QString::number(points[i].getZ()));
    }
 
    //Draw Delaunay edges

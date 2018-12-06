@@ -154,19 +154,19 @@ public:
     {
         Widget->setWindowTitle(QApplication::translate("Widget", "DTM", 0));
         label->setText(QApplication::translate("Widget", "Generate points", 0));
-        points_count->setText(QApplication::translate("Widget", "199", 0));
+        points_count->setText(QApplication::translate("Widget", "600", 0));
         comboBox->clear();
         comboBox->insertItems(0, QStringList()
          << QApplication::translate("Widget", "Randomised Grid", 0)
-         << QApplication::translate("Widget", "Kupa", 0)
-         << QApplication::translate("Widget", "Spo\304\215inek", 0)
-         << QApplication::translate("Widget", "\303\232dol\303\255", 0)
-         << QApplication::translate("Widget", "H\305\231bet", 0)
+         << QApplication::translate("Widget", "Pile", 0)
+         << QApplication::translate("Widget", "Rest", 0)
+         << QApplication::translate("Widget", "Valley", 0)
+         << QApplication::translate("Widget", "Ridge", 0)
         );
         Points->setText(QApplication::translate("Widget", "Points", 0));
         Delaunay->setText(QApplication::translate("Widget", "Delaunay", 0));
         label_2->setText(QApplication::translate("Widget", "Interval of contours", 0));
-        DZ->setText(QApplication::translate("Widget", "5", 0));
+        DZ->setText(QApplication::translate("Widget", "15", 0));
         Contours->setText(QApplication::translate("Widget", "Contours", 0));
         comboBox_2->clear();
         comboBox_2->insertItems(0, QStringList()
