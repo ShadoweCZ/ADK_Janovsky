@@ -31,39 +31,47 @@ std::vector<QPoint3D> GeneratePoints::generateKupa(int &n, QSize &size){
     QPoint3D p;
     int w = size.width();
     int h = size.height();                                                  //window size to fit the generated stuff inside
-    QPoint3D center(w/2,h/2,90+rand()%5);                                                 //centre of circle, its fixed position because fitting to display problems
+    QPoint3D center(w/2,h/2,430+rand()%5);                                                 //centre of circle, its fixed position because fitting to display problems
     pts.push_back(center);
-    double fi = (2*M_PI)/n*4;
+    double fi = (2*M_PI)/n*5;
 
-    for(int i = 0;i<n/4;i++)                                                  //generating points on circle of random radius
+//    for(int i = 0;i<n/5;i++)                                                  //generating points on circle of random radius
+//    {
+//        p.setX(center.x() + (50+rand()%2)*cos(i*(fi+rand()%1)));
+//        p.setY(center.y() + (50+rand()%2)*sin(i*(fi+rand()%1)));
+//        p.setZ(425+rand()%3);
+//        pts.push_back(p);
+//    }
+
+//    for(int i = 0;i<n/5;i++)                                                  //generating points on circle of random radius
+//    {
+//        p.setX(center.x() + (100+rand()%2)*cos(i*(fi+rand()%1)));
+//        p.setY(center.y() + (100+rand()%2)*sin(i*(fi+rand()%1)));
+//        p.setZ(420+rand()%1);
+//        pts.push_back(p);
+//    }
+
+    for(int i = 0;i<n/5;i++)                                                  //generating points on circle of random radius
     {
-        p.setX(center.x() + (50+rand()%5)*cos(i*(fi)));
-        p.setY(center.y() + (50+rand()%5)*sin(i*(fi)));
-        p.setZ(75+rand()%3);
+        p.setX(center.x() + (150+rand()%3)*cos(i*(fi+rand()%1)));
+        p.setY(center.y() + (150+rand()%3)*sin(i*(fi+rand()%1)));
+        p.setZ(415+rand()%2);
         pts.push_back(p);
     }
 
-    for(int i = 0;i<n/4;i++)                                                  //generating points on circle of random radius
-    {
-        p.setX(center.x() + (100+rand()%5)*cos(i*(fi)));
-        p.setY(center.y() + (100+rand()%5)*sin(i*(fi)));
-        p.setZ(50+rand()%2);
-        pts.push_back(p);
-    }
-
-    for(int i = 0;i<n/4;i++)                                                  //generating points on circle of random radius
-    {
-        p.setX(center.x() + (150+rand()%5)*cos(i*(fi)));
-        p.setY(center.y() + (150+rand()%5)*sin(i*(fi)));
-        p.setZ(25+rand()%2);
-        pts.push_back(p);
-    }
-
-    for(int i = 0;i<n/4;i++)                                                  //generating points on circle of random radius
+    for(int i = 0;i<n/5;i++)                                                  //generating points on circle of random radius
     {
         p.setX(center.x() + (330+rand()%5)*cos(i*(fi)));
         p.setY(center.y() + (370+rand()%5)*sin(i*(fi)));
-        p.setZ(0+rand()%2);
+        p.setZ(400+rand()%2);
+        pts.push_back(p);
+    }
+
+    for(int i = 0;i<n/5;i++)                                                  //generating points on circle of random radius
+    {
+        p.setX(center.x() + (1000+rand()%5)*cos(i*(fi)));
+        p.setY(center.y() + (1000+rand()%5)*sin(i*(fi)));
+        p.setZ(300+rand()%2);
         pts.push_back(p);
     }
 
@@ -74,8 +82,7 @@ std::vector<QPoint3D> GeneratePoints::generateKupa(int &n, QSize &size){
 std::vector<QPoint3D> GeneratePoints::generateHrbet(int &n, QSize &size){
     std::vector<QPoint3D> pts;
     QPoint3D p;
-    int w = size.width();
-    int h = size.height();                                                  //window size to fit the generated stuff inside
+    int w = size.width();                                                  //window size to fit the generated stuff inside
 
     QPoint3D center(w/2,0,n+rand()%5);
     pts.push_back(center);
