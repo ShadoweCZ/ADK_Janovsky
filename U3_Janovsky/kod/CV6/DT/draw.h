@@ -15,10 +15,10 @@ class Draw : public QWidget
         std::vector<QPoint3D> points;     //List of points
         std::vector<Edge> dt;             //List of Delaunay edges
         std::vector<Edge> contours;       //List of contours
-        std::vector<Triangle> dtm;
+        std::vector<Triangle> dtm;         //list of triangles
         bool slope, aspect;
         std::vector<double> contour_heights; //List of contour heights
-        int dz;
+        int dz;                             //distance betwen contours
 
     public:
         explicit Draw(QWidget *parent = nullptr);

@@ -3,7 +3,7 @@
 
 GeneratePoints::GeneratePoints(){}
 
-
+// generate modifed grid (aka random points) just for test
 std::vector<QPoint3D> GeneratePoints::generateGrid(int &n, QSize &size){
     int h = size.height()-10;                                               //window size to fit the generated stuff inside
     int w = size.width()-10;
@@ -12,29 +12,28 @@ std::vector<QPoint3D> GeneratePoints::generateGrid(int &n, QSize &size){
     double gapX = h/ceil(std::sqrt(n));
     double gapY = w/ceil(std::sqrt(n));
 
-
+        //standard grid creation + RAND ,RAND heights
         for(double x=10;x<w;x+=gapX){                                            //creating points
-            x = x + rand()%40;
             for(double y=10;y<h;y+=gapY){
-                y = y + rand()%40;
                 double z=rand()%100;
-                pts.push_back(QPoint3D(x,y,z));
+                pts.push_back(QPoint3D(x+ rand()%10 - rand()%10,y + rand()%10 - rand()%10,z));
             }
         }
 
     return pts;
 }
 
-
-std::vector<QPoint3D> GeneratePoints::generateKupa(int &n, QSize &size){
+// generate pile
+std::vector<QPoint3D> GeneratePoints::generatePile(int &n, QSize &size){
     std::vector<QPoint3D> pts;
     QPoint3D p;
     int w = size.width();
     int h = size.height();                                                  //window size to fit the generated stuff inside
-    QPoint3D center(w/2,h/2,430+rand()%5);                                                 //centre of circle, its fixed position because fitting to display problems
+    QPoint3D center(w/2,h/2,430+rand()%5);                                  //centre of circle, its fixed position because fitting to display problems
     pts.push_back(center);
     double fi = (2*M_PI)/n*5;
 
+    // generate multiple circles with constanly lowering height to create Pile
 //    for(int i = 0;i<n/5;i++)                                                  //generating points on circle of random radius
 //    {
 //        p.setX(center.x() + (50+rand()%2)*cos(i*(fi+rand()%1)));
@@ -79,15 +78,16 @@ std::vector<QPoint3D> GeneratePoints::generateKupa(int &n, QSize &size){
     return pts;
 }
 
-std::vector<QPoint3D> GeneratePoints::generateHrbet(int &n, QSize &size){
+//generate ridge
+std::vector<QPoint3D> GeneratePoints::generateRidge(int &n, QSize &size){
     std::vector<QPoint3D> pts;
     QPoint3D p;
     int w = size.width();                                                  //window size to fit the generated stuff inside
 
-    QPoint3D center(w/2,0,n+rand()%5);
+    QPoint3D center(w/2,0,n+rand()%5);  //point in the top centre, its the highest point
     pts.push_back(center);
 
-    // hrbet
+    //ridge itself, slowly decreasing height
     for(int i = 0;i<n/5;i++)
     {
         p.setX(center.x() + ((rand()%5)-rand()%5));
@@ -95,6 +95,10 @@ std::vector<QPoint3D> GeneratePoints::generateHrbet(int &n, QSize &size){
         p.setZ(n-i-rand()%1);
         pts.push_back(p);
     }
+
+    // now we didnt use circle (angle,distance) to generate, instaed we use additions to the coordinates from center point
+    // we created multiple lines that are from centre point but are aimed away frim ridge
+    // height of those "lines" is decreasing faster, creating ridge
 
     // R 1
     for(int i = 0;i<n/7;i++)
@@ -170,8 +174,8 @@ std::vector<QPoint3D> GeneratePoints::generateHrbet(int &n, QSize &size){
 return pts;
 }
 
-
-std::vector<QPoint3D> GeneratePoints::generateSpocinek(int &n, QSize &size){
+//generate rest
+std::vector<QPoint3D> GeneratePoints::generateRest(int &n, QSize &size){
     int h = size.height()-10;                                               //window size to fit the generated stuff inside
     int w = size.width()-10;
                                                                             //distance betwen points
@@ -179,33 +183,35 @@ std::vector<QPoint3D> GeneratePoints::generateSpocinek(int &n, QSize &size){
     double gapX = h/ceil(std::sqrt(n));
     double gapY = w/ceil(std::sqrt(n));
 
+    //again we use the modifed raster from beginning, and we edit that
 
         for(double x=10;x<w;x+=gapX){                                            //creating points
-            x = x + rand()%40;
 
             for(double y=10;y<h;y+=gapY){
-                y = y + rand()%40;
-
                 double z;
 
-                if (y < h/3)
-                    z = (h-y - rand()%20 + rand()%20);
+                // create 3 sectors, upper, middle and lower
+                // upper and lower have around constant slope
+                // the middle one if flat, creating rest
+                if (y < h/3) //upper
+                    z = (h-y - rand()%20 + rand()%20-75);
 
-                else if (y > 2*h/3)
-                    z = (h-y + rand()%20 - rand()%20);
+                else if (y > 2*h/3) //lower
+                    z = (h-y + rand()%20 - rand()%20+75);
 
-                else
+                else    //middle
                     z = (h/2 - rand()%20 + rand()%20);
 
 
-                pts.push_back(QPoint3D(x,y,z));
+                pts.push_back(QPoint3D(x+ rand()%10 - rand()%10,y+ rand()%10 - rand()%10,z));
             }
         }
 
     return pts;
 }
 
-std::vector<QPoint3D> GeneratePoints::generateUdoli(int &n, QSize &size){
+//generate valey
+std::vector<QPoint3D> GeneratePoints::generateValey(int &n, QSize &size){
     int h = size.height()-10;                                               //window size to fit the generated stuff inside
     int w = size.width()-10;
                                                                             //distance betwen points
@@ -213,23 +219,23 @@ std::vector<QPoint3D> GeneratePoints::generateUdoli(int &n, QSize &size){
     double gapX = h/ceil(std::sqrt(n));
     double gapY = w/ceil(std::sqrt(n));
 
+    //again we use the modifed raster from beginning, and we edit that
 
         for(double x=10;x<w;x+=gapX){                                            //creating points
-            x = x + rand()%40;
 
             for(double y=10;y<h;y+=gapY){
-                y = y + rand()%40;
 
                 double z;
 
-                if (y < h/2)
+                // area split onto 2 parts, 1 is decreasing, 1 is increasing in height
+                if (y < h/2) //uper half
                     z = round(h-y - rand()%20 + rand()%20);
 
-                else
+                else    //lower half
                     z = round(y + rand()%20 - rand()%20);
 
 
-                pts.push_back(QPoint3D(x,y,z));
+                pts.push_back(QPoint3D(x+ rand()%10 - rand()%10,y+ rand()%10 - rand()%10,z));
             }
         }
 

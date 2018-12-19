@@ -16,10 +16,10 @@ Widget::Widget(QWidget *parent) :
 Widget::~Widget(){delete ui;}
 
 void Widget::on_Points_clicked()
-{
+{   //generate points
 int num = ui->points_count->text().toInt();
 
-//Generate                                                  // description is all the same, only think that changes is method used
+//Generate modifed grid                                                 // description is all the same, only think that changes is method used
 if ((ui->comboBox->currentIndex())==0){
     ui->Canvas->clearDT();
     QSize s = ui->Canvas->size();                           // this gives size of canvas so we can fill the whole space on any monitor (any resizing)
@@ -27,38 +27,42 @@ if ((ui->comboBox->currentIndex())==0){
     ui->Canvas->repaint();                                  // set points and paint them
 }
 
+//generate pile
 if (ui->comboBox->currentIndex()==1){
     ui->Canvas->clearDT();
     QSize s = ui->Canvas->size();
-    ui->Canvas->setPoints(GeneratePoints::generateKupa(num,s));
+    ui->Canvas->setPoints(GeneratePoints::generatePile(num,s));
     ui->Canvas->repaint();
 }
 
+//generate rest
 if (ui->comboBox->currentIndex()==2){
     ui->Canvas->clearDT();
     QSize s = ui->Canvas->size();
-    ui->Canvas->setPoints(GeneratePoints::generateSpocinek(num,s));
+    ui->Canvas->setPoints(GeneratePoints::generateRest(num,s));
     ui->Canvas->repaint();
 }
 
+//generate valey
 if (ui->comboBox->currentIndex()==3){
     ui->Canvas->clearDT();
     QSize s = ui->Canvas->size();
-    ui->Canvas->setPoints(GeneratePoints::generateUdoli(num,s));
+    ui->Canvas->setPoints(GeneratePoints::generateValey(num,s));
     ui->Canvas->repaint();
 }
 
+//generate ridge
 if (ui->comboBox->currentIndex()==4){
     ui->Canvas->clearDT();
     QSize s = ui->Canvas->size();
-    ui->Canvas->setPoints(GeneratePoints::generateHrbet(num,s));
+    ui->Canvas->setPoints(GeneratePoints::generateRidge(num,s));
     ui->Canvas->repaint();
 }
 
 }
 
 void Widget::on_Delaunay_clicked()
-{
+{   //create triangles
     std::vector<QPoint3D> points = ui->Canvas->getPoints();
     std::vector<Edge> dt = Algorithms::DT(points);
     ui->Canvas->setDT(dt);
@@ -73,9 +77,7 @@ void Widget::on_Contours_clicked()
     std::vector<Edge> dt = ui->Canvas->getDT();
     std::vector<double> contour_heights;
     std::vector<Edge> contours = Algorithms::createContours(dt, 0.0, 9999.9, dz, contour_heights);
-    //std::vector<Edge> contours5 = Algorithms::createContours(dt, 0, 9999, dz*5);
     ui->Canvas->setContours(contours,contour_heights,dz);
-    //ui->Canvas->setContours5(contours5);
     repaint();
 }
 
@@ -96,6 +98,7 @@ void Widget::on_Analyze_clicked()
     std::vector<Triangle> dtm = Algorithms::analyzeDTM(dt);
     ui->Canvas->setDTM(dtm);
 
+    //only show whats selected
     if (ui->comboBox_2->currentIndex()==0){
         slope = TRUE;
         aspect = FALSE;

@@ -11,6 +11,7 @@
 
 Draw::Draw(QWidget *parent) : QWidget(parent){}
 
+//give parameters of contours
 void Draw::setContours(std::vector<Edge> &contours_, std::vector<double> &contour_heights_,int dz_){
     contours = contours_;
     contour_heights = contour_heights_;
@@ -44,31 +45,31 @@ void Draw::paintEvent(QPaintEvent *e)
    }
 
      //Draw contour lines
-for(unsigned int i = 0; i < contours.size(); i++)
-{
-
-    int h = contour_heights[i];
-    int hl = 5*dz;
-
-    //diferenciate betwen main contur and normal contur lines
-    if(!(h%(hl)))
-       {
-        painter.setPen(QPen(QColor(139,69,19),2));
-        if(!(i%(8))){ // describe main contur lines with thier heights
-            double text_x = (contours[i].getS().x() + contours[i].getE().x())/2;
-            double text_y = (contours[i].getS().y() + contours[i].getE().y())/2;
-            painter.drawText(text_x, text_y, QString::number(h));
-        }
-    }
-    else
+    for(unsigned int i = 0; i < contours.size(); i++)
     {
+
+        int h = contour_heights[i];
+        int hl = 5*dz;
+
+        //diferenciate betwen main contur and normal contur lines
+        if(!(h%(hl))) //main countours, highligted
+        {
+            painter.setPen(QPen(QColor(139,69,19),2));
+            if(!(i%(8))){ // describe main contur lines with thier heights
+                double text_x = (contours[i].getS().x() + contours[i].getE().x())/2;
+                double text_y = (contours[i].getS().y() + contours[i].getE().y())/2;
+                painter.drawText(text_x, text_y, QString::number(h));
+            }
+        }
+        else //normal contours
+        {
          painter.setPen(QPen(QColor(139,69,19),1));
-    }
+        }
     painter.drawLine(contours[i].getS(), contours[i].getE());
-}
+    }
 
 
-
+   //Fill triangles with shades of gray based on thier slope
    if(slope == TRUE)
    {
        //Draw slope
@@ -95,6 +96,7 @@ for(unsigned int i = 0; i < contours.size(); i++)
        }
    }
 
+   //Fill triangles with colors based on thier aspect
    if(aspect == TRUE)
    {
        //Draw aspect
@@ -108,6 +110,8 @@ for(unsigned int i = 0; i < contours.size(); i++)
 
            int count_aspect = t.getAspect();
 
+
+            // intervals of aspect values that are given specific color
            if((count_aspect>=0) && (count_aspect<22.5)){
                painter.setBrush(Qt::red);
            }
