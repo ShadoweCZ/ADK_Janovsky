@@ -35,7 +35,6 @@ public:
     QComboBox *comboBox;
     QSpacerItem *verticalSpacer_2;
     QPushButton *pushButton_2;
-    QPushButton *pushButton_5;
     QSpacerItem *verticalSpacer_3;
     QPushButton *pushButton_3;
     QPushButton *pushButton_4;
@@ -100,11 +99,6 @@ public:
 
         verticalLayout->addWidget(pushButton_2);
 
-        pushButton_5 = new QPushButton(Widget);
-        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
-
-        verticalLayout->addWidget(pushButton_5);
-
         verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer_3);
@@ -144,7 +138,6 @@ public:
         comboBox->setItemText(3, QApplication::translate("Widget", "Difference B-A", nullptr));
 
         pushButton_2->setText(QApplication::translate("Widget", "Boolean Operations", nullptr));
-        pushButton_5->setText(QApplication::translate("Widget", "Buffer", nullptr));
         pushButton_3->setText(QApplication::translate("Widget", "Clear results", nullptr));
         pushButton_4->setText(QApplication::translate("Widget", "Clear All", nullptr));
     } // retranslateUi
