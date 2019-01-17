@@ -5,23 +5,6 @@ using namespace std;
 Draw::Draw(QWidget *parent) : QWidget(parent)
 {
     ab = true;
-    /*
-    QPointFB p1(0,0);
-    QPointFB p2(100,0);
-    QPointFB p3(0,100);
-
-    polA.push_back(p1);
-    polA.push_back(p2);
-    polA.push_back(p3);
-
-    QPointFB p4(50,10);
-    QPointFB p5(150,10);
-    QPointFB p6(50,110);
-
-    polB.push_back(p4);
-    polB.push_back(p5);
-    polB.push_back(p6);
-    */
 }
 
 void Draw::paintEvent(QPaintEvent *e)
@@ -39,18 +22,13 @@ void Draw::paintEvent(QPaintEvent *e)
     drawPol(polB, painter);
 
     //Draw result
-    painter.setPen(Qt::red);
+    painter.setPen(QPen(Qt::red, 3));
+    painter.setBrush(Qt::BDiagPattern);
     for(std::vector<QPointFB> vec: res)
     {
         drawPol(vec, painter);
     }
 
-    //Draw offset
-    painter.setPen(Qt::cyan);
-    for(std::vector<QPointFB> b: buff)
-    {
-        drawPol(b, painter);
-    }
 }
 
 void Draw::drawPol(std::vector<QPointFB> &pol, QPainter &painter)
